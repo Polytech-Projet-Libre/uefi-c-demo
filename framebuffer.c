@@ -68,15 +68,15 @@ void fb_setcolor(struct framebuffer *fb, uint32_t x, uint32_t y, uint8_t r, uint
   uint32_t color = 0;
 
   if (fb->bgr) {
-    /* BBGGRRXX */
-    color |= b << 16;
-    color |= g << 8;
-    color |= r << 0;
-  } else {
-    /* RRGGBBXX */
+    /* XXRRGGBB */
     color |= r << 16;
     color |= g << 8;
     color |= b << 0;
+  } else {
+    /* XXBBGGRR */
+    color |= b << 16;
+    color |= g << 8;
+    color |= r << 0;
   }
 
   assert(x < fb->width);
